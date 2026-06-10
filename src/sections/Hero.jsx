@@ -47,12 +47,12 @@ export const Hero = () => {
   };
 
   const handleDownloadResume = () => {
-    // Generate a temporary mock Resume download trigger
     const link = document.createElement('a');
-    link.href = '#';
+    link.href = '/Anurad_Panyam_Resume.pdf';
     link.setAttribute('download', 'Anurad_Panyam_Resume.pdf');
-    // We can also trigger window.print() on a hidden resume page or mock alert for demo
-    alert("Resume download triggered! (In production, place your resume.pdf inside the /public folder)");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
