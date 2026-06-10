@@ -42,15 +42,22 @@ export const Certifications = () => {
     <section id="certifications" className="py-24 border-t border-white/5 relative select-text">
       <div className="max-w-7xl mx-auto px-6">
         
-        {/* Section Title */}
-        <div className="flex flex-col items-center mb-16 text-center">
-          <span className="text-xs font-bold uppercase tracking-widest text-cyber-indigo dark:text-cyber-teal mb-3 block">
-            Credentials
-          </span>
-          <h2 className="font-display text-3xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
-            Licenses & <span className="text-gradient">Certifications</span>
-          </h2>
-          <div className="w-16 h-1.5 bg-gradient-to-r from-cyber-indigo to-cyber-teal rounded-full mt-4" />
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between border-b border-slate-200/10 dark:border-white/5 pb-8 mb-16 relative">
+          <div className="text-left">
+            <span className="coordinate-mono text-xs text-cyber-indigo dark:text-cyber-teal mb-3 block">
+              // CREDENTIALS_REF // 06
+            </span>
+            <h2 className="font-display text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
+              Licenses & <span className="font-editorial italic font-normal text-cyber-indigo dark:text-cyber-teal">Certifications</span>
+            </h2>
+          </div>
+          <div className="coordinate-mono text-xs text-slate-400 dark:text-slate-500 mt-4 md:mt-0 select-none">
+            [CREDENTIALS // PROOFS]
+          </div>
+          {/* Blueprint Crosshairs */}
+          <div className="absolute -bottom-1 -left-1 text-[10px] text-cyber-teal/30 select-none">+</div>
+          <div className="absolute -bottom-1 -right-1 text-[10px] text-cyber-teal/30 select-none">+</div>
         </div>
 
         {/* Certifications Grid */}
@@ -58,43 +65,40 @@ export const Certifications = () => {
           {certsData.map((cert) => (
             <motion.div
               key={cert.id}
-              whileHover={{ y: -6 }}
-              className="glass-card rounded-2xl overflow-hidden flex flex-col h-full group relative"
+              whileHover={{ y: -4 }}
+              className="glass-panel asymmetric-rounded overflow-hidden flex flex-col h-full group relative border border-slate-200/10 dark:border-white/5 text-left"
             >
-              {/* Badge visual banner */}
-              <div className={`h-24 bg-gradient-to-tr ${cert.gradient} flex items-center justify-between px-6 relative overflow-hidden`}>
-                <div className="absolute inset-0 bg-black/10 pointer-events-none" />
-                <div className="p-3.5 rounded-xl bg-white/10 backdrop-blur-md text-white border border-white/10">
-                  <Award className="w-6 h-6" />
+              {/* Badge visual banner - simplified, human-crafted design */}
+              <div className="h-16 border-b border-slate-200/10 dark:border-white/5 flex items-center justify-between px-6 relative overflow-hidden bg-[#020304]/40">
+                <div className="coordinate-mono text-[9px] select-none uppercase tracking-widest">// CERT_0{cert.id}</div>
+                <div className="text-cyber-indigo dark:text-cyber-teal">
+                  <Award className="w-4 h-4" />
                 </div>
-                <span className="text-[10px] font-mono font-bold tracking-widest uppercase text-white/50">
-                  Credential
-                </span>
               </div>
 
               {/* Body description info */}
               <div className="p-6 flex flex-col flex-1 justify-between text-left">
                 <div>
-                  <h3 className="font-display text-lg font-bold text-slate-900 dark:text-white mb-1 group-hover:text-cyber-teal transition-colors">
+                  <h3 className="font-display text-base sm:text-lg font-bold text-slate-900 dark:text-white mb-2 transition-all group-hover:text-cyber-indigo group-hover:underline dark:group-hover:text-cyber-teal decoration-cyber-indigo dark:decoration-cyber-teal decoration-1.5 underline-offset-4 tracking-tight">
                     {cert.title}
                   </h3>
-                  <p className="text-xs font-semibold text-slate-800 dark:text-slate-200 mb-4">
+                  <p className="text-xs font-semibold text-slate-800 dark:text-slate-200 mb-4 uppercase tracking-wider">
                     {cert.issuer}
                   </p>
 
-                  <div className="flex items-center gap-4 text-[11px] text-slate-500 dark:text-slate-400 mb-6 font-semibold">
+                  <div className="flex items-center gap-4 text-[10px] text-slate-500 dark:text-slate-400 mb-6 font-mono">
                     <span className="flex items-center gap-1">
-                      <Calendar className="w-3.5 h-3.5 text-cyber-teal" />
+                      <Calendar className="w-3 h-3 text-cyber-teal" />
                       {cert.date}
                     </span>
                     <span>ID: {cert.credentialId}</span>
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between border-t border-white/5 pt-4">
+                <div className="flex items-center justify-between border-t border-slate-200/10 dark:border-white/5 pt-4 mt-auto">
                   <button
                     onClick={() => setSelectedCert(cert)}
-                    className="text-xs font-bold text-cyber-indigo dark:text-cyber-teal hover:underline "
+                    className="text-xs font-bold text-cyber-indigo dark:text-cyber-teal hover:underline cursor-pointer"
                   >
                     View Details
                   </button>
@@ -102,7 +106,7 @@ export const Certifications = () => {
                     href={cert.verification}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-slate-400 hover:text-white flex items-center gap-1 text-xs "
+                    className="text-slate-500 hover:text-slate-900 dark:hover:text-white flex items-center gap-1 text-xs transition-colors"
                   >
                     <span>Verify</span>
                     <ExternalLink className="w-3 h-3" />

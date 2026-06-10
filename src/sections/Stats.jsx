@@ -35,20 +35,19 @@ const IndividualStat = ({ stat }) => {
   return (
     <div 
       ref={ref}
-      className="glass-card p-8 rounded-3xl text-center flex flex-col items-center justify-center relative group border border-slate-200/50 dark:border-white/5 overflow-hidden"
+      className="glass-panel p-8 asymmetric-rounded text-center flex flex-col items-center justify-center relative group border border-slate-200/10 dark:border-white/5 overflow-hidden transition-all duration-300 hover:-translate-y-0.5"
     >
-      {/* Decorative Glow */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-cyber-indigo/5 to-cyber-teal/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl -z-10" />
-      {/* Top right design dot indicator */}
-      <span className="absolute top-4 right-4 w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-white/10 group-hover:bg-cyber-teal transition-colors duration-500" />
+      {/* Corner Crosshairs */}
+      <div className="absolute top-2.5 left-2.5 coordinate-mono select-none text-[8px] opacity-30">+</div>
+      <div className="absolute top-2.5 right-2.5 coordinate-mono select-none text-[8px] opacity-30">+</div>
 
       <motion.span 
-        className="font-display text-4xl sm:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyber-indigo via-cyber-teal to-cyber-pink select-none"
+        className="font-display text-4xl sm:text-5xl font-black text-slate-900 dark:text-white select-none"
       >
         {stat.id === 3 ? (count / 10).toFixed(1) : count}{stat.suffix}
       </motion.span>
-      <span className="font-sans text-[10px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 mt-3.5 uppercase tracking-widest">
-        {stat.label}
+      <span className="font-mono text-[9px] font-bold text-slate-500 mt-4 uppercase tracking-widest leading-normal">
+        // {stat.label}
       </span>
     </div>
   );

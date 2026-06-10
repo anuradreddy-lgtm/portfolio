@@ -150,22 +150,29 @@ export const Projects = () => {
   });
 
   return (
-    <section id="projects" className="py-24 border-t border-white/5 relative select-text">
+    <section id="projects" className="py-32 border-t border-white/5 relative select-text">
       <div className="max-w-7xl mx-auto px-6">
         
-        {/* Section Title */}
-        <div className="flex flex-col items-center mb-16 text-center">
-          <span className="text-xs font-bold uppercase tracking-widest text-cyber-indigo dark:text-cyber-teal mb-3 block">
-            Case Studies
-          </span>
-          <h2 className="font-display text-3xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
-            Featured <span className="text-gradient">Projects</span>
-          </h2>
-          <div className="w-16 h-1.5 bg-gradient-to-r from-cyber-indigo to-cyber-teal rounded-full mt-4" />
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between border-b border-slate-200/10 dark:border-white/5 pb-8 mb-16 relative">
+          <div className="text-left">
+            <span className="coordinate-mono text-xs text-cyber-indigo dark:text-cyber-teal mb-3 block">
+              // PORTFOLIO_REF // 04
+            </span>
+            <h2 className="font-display text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
+              Featured <span className="font-editorial italic font-normal text-cyber-indigo dark:text-cyber-teal">Projects</span>
+            </h2>
+          </div>
+          <div className="coordinate-mono text-xs text-slate-400 dark:text-slate-500 mt-4 md:mt-0 select-none">
+            [CASE_STUDIES // APPLICATIONS]
+          </div>
+          {/* Blueprint Crosshairs */}
+          <div className="absolute -bottom-1 -left-1 text-[10px] text-cyber-teal/30 select-none">+</div>
+          <div className="absolute -bottom-1 -right-1 text-[10px] text-cyber-teal/30 select-none">+</div>
         </div>
 
         {/* Filters and Search Bar Container */}
-        <div className="flex flex-col md:flex-row gap-6 justify-between items-center mb-12">
+        <div className="flex flex-col md:flex-row gap-6 justify-between items-center mb-16">
           {/* Tab Categories */}
           <div className="flex flex-wrap gap-2 justify-center items-center">
             {filterCategories.map((category) => {
@@ -174,9 +181,9 @@ export const Projects = () => {
                 <button
                   key={category}
                   onClick={() => setActiveFilter(category)}
-                  className={`px-4 py-2 rounded-xl text-xs font-bold transition-all border ${
+                  className={`px-4 py-2 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300 border cursor-pointer ${
                     isSelected
-                      ? 'bg-cyber-indigo text-white border-cyber-indigo dark:bg-cyber-indigo dark:border-cyber-indigo dark:text-white'
+                      ? 'bg-cyber-indigo border-cyber-indigo text-white shadow-md'
                       : 'border-slate-200 dark:border-slate-800 bg-transparent text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900/60'
                   }`}
                 >
@@ -196,7 +203,7 @@ export const Projects = () => {
               placeholder="Search tech or title..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-11 pr-4 py-3 rounded-2xl glass-card border border-slate-200 dark:border-slate-800/80 focus:border-cyber-indigo/40 focus:ring-0 text-sm outline-none text-slate-800 dark:text-white placeholder-slate-500 transition-all"
+              className="w-full pl-11 pr-4 py-3 rounded-full glass-card border border-slate-200 dark:border-slate-800/80 focus:border-cyber-indigo/40 focus:ring-0 text-xs outline-none text-slate-800 dark:text-white placeholder-slate-500 transition-all font-sans font-semibold uppercase tracking-wider"
             />
           </div>
         </div>
@@ -205,21 +212,26 @@ export const Projects = () => {
         {filteredProjects.length > 0 ? (
           <motion.div 
             layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-20 pt-8"
           >
             <AnimatePresence mode="popLayout">
-              {filteredProjects.map((project) => (
-                <ProjectCard
-                  key={project.id}
-                  project={project}
-                  onOpenModal={setActiveProjectModal}
-                />
-              ))}
+              {filteredProjects.map((project, idx) => {
+                // Break perfect template symmetry by applying a vertical translation pattern to alternate columns on desktop.
+                const staggerClass = idx % 3 === 1 ? 'lg:-translate-y-6' : idx % 3 === 2 ? 'lg:translate-y-6' : '';
+                return (
+                  <div key={project.id} className={`${staggerClass} transition-transform duration-500`}>
+                    <ProjectCard
+                      project={project}
+                      onOpenModal={setActiveProjectModal}
+                    />
+                  </div>
+                );
+              })}
             </AnimatePresence>
           </motion.div>
         ) : (
           <div className="glass-panel p-12 rounded-3xl text-center text-slate-400 font-medium">
-            No projects matched your filters or search terms. Try searching "React" or "Docker"!
+            No projects matched your filters or search terms. Try searching "React" or "Python"!
           </div>
         )}
 

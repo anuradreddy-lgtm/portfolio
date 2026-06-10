@@ -59,23 +59,21 @@ export const Navbar = ({ onTerminalToggle }) => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
-          scrolled ? 'py-4 px-4 sm:px-8' : 'py-6 px-0'
-        }`}
+        className="fixed top-4 md:top-6 left-0 right-0 z-40 px-4 flex justify-center w-full pointer-events-none"
       >
-        <div className={`max-w-7xl mx-auto px-6 py-3 flex justify-between items-center transition-all duration-500 ${
+        <div className={`w-full max-w-5xl px-6 py-2.5 flex justify-between items-center transition-all duration-300 pointer-events-auto rounded-full ${
           scrolled
-            ? 'glass-panel rounded-2xl shadow-xl shadow-black/20 bg-white/80 dark:bg-cyber-dark/85 backdrop-blur-md border-slate-200/10 dark:border-white/5'
-            : 'bg-transparent border-b border-transparent'
+            ? 'glass-panel bg-white/80 dark:bg-[#050608]/90 shadow-2xl border border-slate-200/10 dark:border-white/5'
+            : 'bg-transparent border border-transparent'
         }`}>
           {/* Logo */}
           <a
             href="#home"
             onClick={(e) => handleNavClick(e, '#home')}
-            className="flex items-center gap-2 font-display text-xl font-bold tracking-tight text-slate-900 dark:text-white group"
+            className="flex items-center gap-2 font-display text-lg font-bold tracking-tight text-slate-900 dark:text-white group"
           >
-            <span className="p-1.5 rounded-lg bg-cyber-indigo text-white group-hover:rotate-12 transition-transform duration-300">
-              <Terminal className="w-4 h-4" />
+            <span className="p-1.5 rounded-full bg-cyber-indigo text-white group-hover:rotate-12 transition-transform duration-300">
+              <Terminal className="w-3.5 h-3.5" />
             </span>
             <span>
               Anurad<span className="text-cyber-indigo">.dev</span>
@@ -91,9 +89,9 @@ export const Navbar = ({ onTerminalToggle }) => {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`relative font-sans text-sm font-medium tracking-wide transition-colors duration-300 px-3.5 py-2 rounded-xl ${
+                  className={`relative font-sans text-xs font-semibold tracking-widest uppercase transition-colors duration-300 px-3.5 py-2 rounded-full ${
                     isActive
-                      ? 'text-cyber-indigo dark:text-white font-semibold'
+                      ? 'text-cyber-indigo dark:text-white'
                       : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
                   }`}
                 >
@@ -101,7 +99,7 @@ export const Navbar = ({ onTerminalToggle }) => {
                   {isActive && (
                     <motion.div
                       layoutId="activeNavIndicator"
-                      className="absolute inset-0 bg-cyber-indigo/5 dark:bg-white/5 border border-cyber-indigo/15 dark:border-white/10 rounded-xl -z-10"
+                      className="absolute inset-0 bg-cyber-indigo/5 dark:bg-white/5 border border-cyber-indigo/15 dark:border-white/10 rounded-full -z-10"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -112,7 +110,7 @@ export const Navbar = ({ onTerminalToggle }) => {
             {/* Quick Terminal Launcher Button */}
             <button
               onClick={onTerminalToggle}
-              className="flex items-center gap-1.5 px-4 py-2 rounded-xl border border-cyber-indigo/35 text-cyber-indigo dark:text-white bg-cyber-indigo/5 hover:bg-cyber-indigo hover:text-white transition-all duration-300 text-xs font-bold shadow-sm cursor-pointer"
+              className="flex items-center gap-1.5 px-4 py-2 rounded-full border border-cyber-indigo/35 text-cyber-indigo dark:text-white bg-cyber-indigo/5 hover:bg-cyber-indigo hover:text-white transition-all duration-300 text-xs font-bold shadow-sm cursor-pointer"
               title="Launch Recruiter CLI Console"
             >
               <Terminal className="w-3.5 h-3.5" />
@@ -126,7 +124,7 @@ export const Navbar = ({ onTerminalToggle }) => {
           <div className="flex md:hidden items-center gap-3">
             <button
               onClick={onTerminalToggle}
-              className="p-2 rounded-xl border border-slate-200/50 dark:border-white/5 bg-slate-100/50 dark:bg-white/5 text-slate-800 dark:text-slate-200 hover:scale-105 transition-transform"
+              className="p-2 rounded-full border border-slate-200/50 dark:border-white/5 bg-slate-100/50 dark:bg-white/5 text-slate-800 dark:text-slate-200 hover:scale-105 transition-transform"
               title="Launch Recruiter CLI Console"
             >
               <Terminal className="w-4 h-4" />

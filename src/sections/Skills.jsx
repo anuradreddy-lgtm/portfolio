@@ -47,45 +47,60 @@ export const Skills = () => {
     <section id="skills" className="py-24 border-t border-white/5 relative select-text">
       <div className="max-w-7xl mx-auto px-6">
         
-        {/* Section Title */}
-        <div className="flex flex-col items-center mb-16 text-center">
-          <span className="text-xs font-bold uppercase tracking-widest text-cyber-indigo dark:text-cyber-teal mb-3 block">
-            Core Toolkit
-          </span>
-          <h2 className="font-display text-3xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
-            Technical <span className="text-gradient">Skills</span>
-          </h2>
-          <div className="w-16 h-1.5 bg-gradient-to-r from-cyber-indigo to-cyber-teal rounded-full mt-4" />
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between border-b border-slate-200/10 dark:border-white/5 pb-8 mb-16 relative">
+          <div className="text-left">
+            <span className="coordinate-mono text-xs text-cyber-indigo dark:text-cyber-teal mb-3 block">
+              // TOOLKIT_REF // 03
+            </span>
+            <h2 className="font-display text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
+              Technical <span className="font-editorial italic font-normal text-cyber-indigo dark:text-cyber-teal">Skills</span>
+            </h2>
+          </div>
+          <div className="coordinate-mono text-xs text-slate-400 dark:text-slate-500 mt-4 md:mt-0 select-none">
+            [STACK // CAPABILITIES]
+          </div>
+          {/* Blueprint Crosshair */}
+          <div className="absolute -bottom-1 -left-1 text-[10px] text-cyber-teal/30 select-none">+</div>
+          <div className="absolute -bottom-1 -right-1 text-[10px] text-cyber-teal/30 select-none">+</div>
         </div>
 
         {/* Dashboard grid layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Left Side: Category Menu list */}
-          <div className="lg:col-span-4 flex flex-col gap-3">
+          <div className="lg:col-span-4 flex flex-col gap-3.5">
             {skillCategories.map((category) => {
               const isSelected = activeCategory === category.id;
               return (
                 <button
                   key={category.id}
                   onClick={() => setActiveCategory(category.id)}
-                  className={`w-full flex items-center justify-between p-5 rounded-2xl border text-left transition-all duration-300 relative overflow-hidden group ${
+                  className={`w-full flex items-center justify-between p-5 rounded-2xl border text-left transition-all duration-300 relative overflow-hidden group cursor-pointer ${
                     isSelected
-                      ? 'border-cyber-indigo bg-cyber-indigo/5 text-cyber-indigo dark:border-cyber-indigo dark:text-cyber-indigo'
+                      ? 'border-cyber-indigo bg-cyber-indigo/5 text-cyber-indigo dark:border-cyber-indigo dark:text-cyber-indigo shadow-md'
                       : 'border-slate-200 dark:border-slate-800 bg-transparent text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900/60'
                   }`}
                 >
+                  {/* Corner crosses on select */}
+                  {isSelected && (
+                    <>
+                      <div className="absolute top-1 left-1 text-[8px] text-cyber-indigo/50 select-none">+</div>
+                      <div className="absolute top-1 right-1 text-[8px] text-cyber-indigo/50 select-none">+</div>
+                    </>
+                  )}
+
                   <div className="flex items-center gap-3.5 z-10">
                     <span className={`p-2 rounded-xl transition-colors ${
                       isSelected ? 'bg-cyber-indigo text-white dark:bg-cyber-indigo dark:text-white' : 'bg-slate-100 dark:bg-slate-900/60 text-slate-500'
                     }`}>
                       {category.icon}
                     </span>
-                    <span className="font-display text-base font-bold tracking-tight">
+                    <span className="font-display text-sm font-bold tracking-widest uppercase">
                       {category.label}
                     </span>
                   </div>
-                  <Award className={`w-4 h-4 transition-transform z-10 ${isSelected ? 'scale-110 text-cyber-indigo' : 'text-slate-500 opacity-0 group-hover:opacity-100'}`} />
+                  <Award className={`w-4 h-4 transition-transform z-10 ${isSelected ? 'scale-115 text-cyber-indigo' : 'text-slate-500 opacity-0 group-hover:opacity-100'}`} />
                   
                   {isSelected && (
                     <motion.div
@@ -101,8 +116,11 @@ export const Skills = () => {
 
           {/* Right Side: Skill indicator progress cards grid */}
           <div className="lg:col-span-8">
-            <div className="glass-card p-8 md:p-10 rounded-3xl min-h-[420px] flex flex-col justify-center">
-              
+            <div className="glass-panel p-8 md:p-10 asymmetric-rounded-lg border border-slate-200/10 dark:border-white/5 min-h-[420px] flex flex-col justify-center relative">
+              {/* Corner crosshairs */}
+              <div className="absolute top-3 left-3 coordinate-mono select-none">+</div>
+              <div className="absolute top-3 right-3 coordinate-mono select-none">+</div>
+
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeCategory}
@@ -116,7 +134,7 @@ export const Skills = () => {
                     return (
                       <div
                         key={skill.name}
-                        className="flex flex-col gap-3 p-5 rounded-2xl bg-slate-50/50 dark:bg-slate-900/10 border border-slate-200/50 dark:border-slate-800/50 hover:border-cyber-indigo/35 dark:hover:border-cyber-indigo/35 transition-all duration-300 group shadow-sm"
+                        className="flex flex-col gap-3.5 p-5 rounded-2xl bg-slate-50/50 dark:bg-slate-900/10 border border-slate-200/50 dark:border-slate-800/50 hover:border-cyber-indigo/35 dark:hover:border-cyber-indigo/35 transition-all duration-300 group shadow-sm text-left"
                       >
                         {/* Title and descriptions */}
                         <div className="flex justify-between items-center text-left">
@@ -134,14 +152,14 @@ export const Skills = () => {
                         </div>
 
                         {/* Premium Horizontal meter bar */}
-                        <div className="h-2 w-full bg-slate-100 dark:bg-cyber-deep/80 rounded-full overflow-hidden border border-slate-200/20 dark:border-white/5 relative p-0.5">
+                        <div className="h-1.5 w-full bg-slate-100 dark:bg-cyber-deep/80 rounded-full overflow-hidden border border-slate-200/10 dark:border-white/5 relative p-0.5">
                           <motion.div
-                            initial={{ width: 0 }}
-                            animate={{ width: `${skill.level}%` }}
-                            transition={{ duration: 1.2, ease: 'easeOut', delay: 0.1 }}
-                            className="h-full rounded-full bg-gradient-to-r from-cyber-indigo to-cyber-teal relative"
+                             initial={{ width: 0 }}
+                             animate={{ width: `${skill.level}%` }}
+                             transition={{ duration: 1.2, ease: 'easeOut', delay: 0.1 }}
+                             className="h-full rounded-full bg-cyber-indigo dark:bg-cyber-teal relative"
                           >
-                            <span className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                             <span className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-white dark:bg-slate-950 border border-cyber-indigo dark:border-cyber-teal" />
                           </motion.div>
                         </div>
                       </div>

@@ -68,19 +68,26 @@ export const Experience = () => {
     <section id="experience" className="py-24 border-t border-white/5 relative select-text">
       <div className="max-w-7xl mx-auto px-6">
         
-        {/* Section Title */}
-        <div className="flex flex-col items-center mb-16 text-center">
-          <span className="text-xs font-bold uppercase tracking-widest text-cyber-indigo dark:text-cyber-teal mb-3 block">
-            Milestones
-          </span>
-          <h2 className="font-display text-3xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
-            History & <span className="text-gradient">Experience</span>
-          </h2>
-          <div className="w-16 h-1.5 bg-gradient-to-r from-cyber-indigo to-cyber-teal rounded-full mt-4" />
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between border-b border-slate-200/10 dark:border-white/5 pb-8 mb-16 relative">
+          <div className="text-left">
+            <span className="coordinate-mono text-xs text-cyber-indigo dark:text-cyber-teal mb-3 block">
+              // MILESTONES_REF // 05
+            </span>
+            <h2 className="font-display text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
+              History & <span className="font-editorial italic font-normal text-cyber-indigo dark:text-cyber-teal">Experience</span>
+            </h2>
+          </div>
+          <div className="coordinate-mono text-xs text-slate-400 dark:text-slate-500 mt-4 md:mt-0 select-none">
+            [LEDGER // JOURNEY]
+          </div>
+          {/* Blueprint Crosshairs */}
+          <div className="absolute -bottom-1 -left-1 text-[10px] text-cyber-teal/30 select-none">+</div>
+          <div className="absolute -bottom-1 -right-1 text-[10px] text-cyber-teal/30 select-none">+</div>
         </div>
 
         {/* Timeline Filters */}
-        <div className="flex justify-center gap-3 mb-16">
+        <div className="flex justify-center gap-3 mb-20 select-none">
           {[
             { id: 'all', label: 'All History' },
             { id: 'work', label: 'Project Milestones' },
@@ -91,9 +98,9 @@ export const Experience = () => {
               <button
                 key={btn.id}
                 onClick={() => setFilter(btn.id)}
-                className={`px-4.5 py-2 rounded-xl text-xs font-bold transition-all border ${
+                className={`px-5 py-2.5 rounded-full text-xs font-bold tracking-wider uppercase transition-all duration-300 border cursor-pointer ${
                   isSelected
-                    ? 'bg-cyber-indigo text-white border-cyber-indigo dark:bg-cyber-teal dark:text-slate-900 dark:border-cyber-teal'
+                    ? 'bg-cyber-indigo border-cyber-indigo text-white shadow-md dark:bg-cyber-teal dark:text-slate-950 dark:border-cyber-teal'
                     : 'border-white/5 bg-slate-900/10 hover:bg-slate-900/25 text-slate-600 dark:text-slate-400 dark:bg-slate-950/20 hover:border-white/10'
                 }`}
               >
@@ -109,7 +116,7 @@ export const Experience = () => {
           <div className="absolute left-0 top-2 bottom-0 w-0.5 bg-slate-200 dark:bg-white/5 md:left-1/2 md:-translate-x-1/2" />
 
           {/* Timeline Nodes */}
-          <div className="space-y-12 relative z-10">
+          <div className="space-y-16 relative z-10">
             {filteredTimeline.map((item, idx) => (
               <TimelineItem
                 key={`${item.role}-${idx}`}

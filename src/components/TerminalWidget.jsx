@@ -194,30 +194,36 @@ export const TerminalWidget = ({ isOpen, onClose }) => {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 30 }}
+          initial={{ opacity: 0, scale: 0.95, y: 30 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.9, y: 30 }}
-          transition={{ duration: 0.3 }}
-          className="fixed inset-x-4 bottom-4 md:right-8 md:left-auto md:w-[580px] z-50 h-[380px] shadow-2xl rounded-2xl overflow-hidden glass-panel border border-slate-200/50 dark:border-white/5 select-text"
+          exit={{ opacity: 0, scale: 0.95, y: 30 }}
+          transition={{ duration: 0.25 }}
+          className="fixed inset-x-4 bottom-4 md:right-8 md:left-auto md:w-[580px] z-50 h-[380px] shadow-2xl asymmetric-rounded-lg overflow-hidden glass-panel border border-slate-200/60 dark:border-white/10 select-text"
         >
+          {/* Corner crosshairs */}
+          <div className="absolute top-2 left-2 text-[10px] text-cyber-indigo/35 dark:text-cyber-teal/35 select-none pointer-events-none font-mono z-30">+</div>
+          <div className="absolute top-2 right-2 text-[10px] text-cyber-indigo/35 dark:text-cyber-teal/35 select-none pointer-events-none font-mono z-30">+</div>
+          <div className="absolute bottom-2 left-2 text-[10px] text-cyber-indigo/35 dark:text-cyber-teal/35 select-none pointer-events-none font-mono z-30">+</div>
+          <div className="absolute bottom-2 right-2 text-[10px] text-cyber-indigo/35 dark:text-cyber-teal/35 select-none pointer-events-none font-mono z-30">+</div>
+
           {/* Header Bar with macOS Window Controls */}
-          <div className="flex items-center justify-between px-4 py-3.5 bg-slate-900/95 dark:bg-cyber-gray/95 border-b border-slate-200/10 dark:border-white/5 select-none">
+          <div className="flex items-center justify-between px-6 py-3 bg-slate-950/95 dark:bg-[#020304]/95 border-b border-slate-200/20 dark:border-white/10 select-none relative z-20">
             <div className="flex items-center gap-2">
               <button 
                 onClick={onClose} 
-                className="w-3 h-3 rounded-full bg-red-500/80 hover:bg-red-500 transition-colors cursor-pointer" 
+                className="w-2.5 h-2.5 rounded-full bg-rose-500/80 hover:bg-rose-500 transition-colors cursor-pointer" 
                 title="Close" 
               />
               <button 
                 onClick={() => setIsMatrixActive(!isMatrixActive)} 
-                className="w-3 h-3 rounded-full bg-yellow-500/80 hover:bg-yellow-500 transition-colors cursor-pointer" 
+                className="w-2.5 h-2.5 rounded-full bg-amber-500/80 hover:bg-amber-500 transition-colors cursor-pointer" 
                 title="Toggle Matrix Rain Effect" 
               />
-              <div className="w-3 h-3 rounded-full bg-green-500/50" />
+              <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/40" />
             </div>
             
-            <div className="flex items-center gap-2 text-[10px] sm:text-xs font-mono text-slate-400">
-              <Terminal className="w-3.5 h-3.5 text-cyber-indigo dark:text-cyber-teal" />
+            <div className="flex items-center gap-2 text-[10px] font-mono text-slate-400 dark:text-slate-500">
+              <Terminal className="w-3 h-3 text-cyber-indigo dark:text-cyber-teal" />
               <span>visitor@anurad.dev: ~ (bash)</span>
             </div>
             
@@ -225,28 +231,38 @@ export const TerminalWidget = ({ isOpen, onClose }) => {
           </div>
 
           {/* Terminal Console Viewport */}
-          <div className="relative w-full h-[calc(100%-48px)] bg-black/95 p-4 overflow-y-auto font-mono text-xs sm:text-sm leading-relaxed text-slate-300">
+          <div className="relative w-full h-[calc(100%-44px)] bg-[#020304]/95 p-6 overflow-y-auto font-mono text-xs sm:text-sm leading-relaxed text-slate-300">
             {/* Matrix Rain Canvas */}
             {isMatrixActive && (
               <canvas
                 ref={matrixCanvasRef}
-                className="absolute inset-0 w-full h-full pointer-events-none opacity-40"
+                className="absolute inset-0 w-full h-full pointer-events-none opacity-40 z-0"
               />
             )}
 
             {/* Scrollable Command History */}
-            <div className="relative z-10 space-y-1.5">
+            <div className="relative z-10 space-y-1.5 text-left">
+              {/* Draftsman ASCII Header */}
+              <pre className="text-[10px] leading-relaxed text-cyber-indigo/40 dark:text-cyber-teal/40 mb-4 select-none pointer-events-none font-bold">
+{`+-- [sys // anurad.dev.shell] ----------------+
+|                                             |
+|   A N U R A D   P A N Y A M                 |
+|   » Full-Stack Developer Console            |
+|                                             |
++---------------------------------------------+`}
+              </pre>
+
               {history.map((line, idx) => (
                 <div
                   key={idx}
                   className={`${
                     line.type === 'input'
-                      ? 'text-white'
+                      ? 'text-white font-medium'
                       : line.type === 'error'
                       ? 'text-rose-400 font-semibold'
                       : line.type === 'system'
-                      ? 'text-cyber-teal'
-                      : 'text-green-400'
+                      ? 'text-cyber-indigo dark:text-cyber-teal font-medium'
+                      : 'text-emerald-400'
                   }`}
                 >
                   {line.text}
@@ -255,7 +271,7 @@ export const TerminalWidget = ({ isOpen, onClose }) => {
 
               {/* Input prompt line */}
               <div className="flex items-center text-white pt-1">
-                <span className="text-cyber-indigo mr-2">visitor@anurad.dev:~$</span>
+                <span className="text-cyber-indigo dark:text-cyber-teal mr-2 font-semibold">visitor@anurad.dev:~$</span>
                 <input
                   ref={inputRef}
                   type="text"

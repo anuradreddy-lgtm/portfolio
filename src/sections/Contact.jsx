@@ -70,15 +70,22 @@ export const Contact = () => {
     <section id="contact" className="py-24 border-t border-white/5 relative select-text">
       <div className="max-w-7xl mx-auto px-6">
         
-        {/* Section Title */}
-        <div className="flex flex-col items-center mb-16 text-center">
-          <span className="text-xs font-bold uppercase tracking-widest text-cyber-indigo dark:text-cyber-teal mb-3 block">
-            Get In Touch
-          </span>
-          <h2 className="font-display text-3xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
-            Contact <span className="text-gradient">Me</span>
-          </h2>
-          <div className="w-16 h-1.5 bg-gradient-to-r from-cyber-indigo to-cyber-teal rounded-full mt-4" />
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between border-b border-slate-200/10 dark:border-white/5 pb-8 mb-16 relative">
+          <div className="text-left">
+            <span className="coordinate-mono text-xs text-cyber-indigo dark:text-cyber-teal mb-3 block">
+              // CONNECT_REF // 08
+            </span>
+            <h2 className="font-display text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tight">
+              Contact <span className="font-editorial italic font-normal text-cyber-indigo dark:text-cyber-teal">Me</span>
+            </h2>
+          </div>
+          <div className="coordinate-mono text-xs text-slate-400 dark:text-slate-500 mt-4 md:mt-0 select-none">
+            [CONNECT // COLLABORATE]
+          </div>
+          {/* Blueprint Crosshairs */}
+          <div className="absolute -bottom-1 -left-1 text-[10px] text-cyber-teal/30 select-none">+</div>
+          <div className="absolute -bottom-1 -right-1 text-[10px] text-cyber-teal/30 select-none">+</div>
         </div>
 
         {/* Contact Grid */}
@@ -86,158 +93,162 @@ export const Contact = () => {
           
           {/* Left Column: Direct Info Cards */}
           <div className="lg:col-span-5 space-y-6">
-            <h3 className="font-display text-xl font-bold text-slate-900 dark:text-white mb-2 text-left">
+            <h3 className="font-display text-xl font-bold text-slate-900 dark:text-white mb-2 text-left uppercase tracking-wider">
               Contact Information
             </h3>
-            <p className="font-sans text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed text-left mb-6">
+            <p className="font-sans text-sm md:text-base text-slate-600 dark:text-slate-400 leading-relaxed text-left mb-8">
               Have a project proposal, workspace opportunity, or just want to exchange technical notes? Feel free to reach out via form or copy my email details directly.
             </p>
 
             {/* Email Card with Clipboard Copy */}
-            <div className="glass-card p-6 rounded-2xl flex items-center justify-between border-white/5 relative overflow-hidden group">
+            <div className="glass-panel p-6 asymmetric-rounded flex items-center justify-between border-slate-200/10 dark:border-white/5 relative overflow-hidden group">
               <div className="flex items-center gap-4 text-left">
-                <span className="p-3.5 rounded-xl bg-cyber-indigo/10 text-cyber-indigo dark:text-cyber-teal dark:bg-cyber-teal/5">
-                  <Mail className="w-5 h-5" />
+                <span className="p-3.5 rounded-full bg-cyber-indigo/5 text-cyber-indigo dark:text-cyber-teal dark:bg-cyber-teal/5 border border-cyber-indigo/15">
+                  <Mail className="w-4 h-4" />
                 </span>
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Email Address</h4>
-                  <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">anuradreddy@gmail.com</p>
+                  <h4 className="text-[10px] font-mono uppercase tracking-widest text-slate-500">// Email Address</h4>
+                  <p className="text-sm font-semibold text-slate-800 dark:text-slate-200 mt-0.5">anuradreddy@gmail.com</p>
                 </div>
               </div>
               <button
                 onClick={handleCopyEmail}
-                className="p-2 rounded-lg border border-white/10 hover:border-cyber-indigo/35 text-slate-400 hover:text-white transition-all bg-white/5"
+                className="p-2 rounded-full border border-slate-200/50 dark:border-white/10 hover:border-cyber-indigo/35 text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all bg-white/5 cursor-pointer"
                 title="Copy email to clipboard"
               >
-                {copiedEmail ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4" />}
+                {copiedEmail ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Copy className="w-3.5 h-3.5" />}
               </button>
             </div>
 
             {/* Location Card */}
-            <div className="glass-card p-6 rounded-2xl flex items-center border-white/5 relative overflow-hidden group">
+            <div className="glass-panel p-6 asymmetric-rounded flex items-center border-slate-200/10 dark:border-white/5 relative overflow-hidden group">
               <div className="flex items-center gap-4 text-left">
-                <span className="p-3.5 rounded-xl bg-cyber-pink/10 text-cyber-pink">
-                  <MapPin className="w-5 h-5" />
+                <span className="p-3.5 rounded-full bg-cyber-pink/5 text-cyber-pink border border-cyber-pink/15">
+                  <MapPin className="w-4 h-4" />
                 </span>
                 <div>
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400">Location</h4>
-                  <p className="text-sm font-semibold text-slate-800 dark:text-slate-200">Hyderabad, Telangana, India</p>
+                  <h4 className="text-[10px] font-mono uppercase tracking-widest text-slate-500">// Location</h4>
+                  <p className="text-sm font-semibold text-slate-800 dark:text-slate-200 mt-0.5">Hyderabad, Telangana, India</p>
                 </div>
               </div>
             </div>
 
             {/* Vector Tech Map Mockup placeholder */}
-            <div className="glass-card rounded-2xl h-44 border-white/5 relative overflow-hidden flex items-center justify-center p-6 bg-slate-950/40 select-none">
+            <div className="glass-panel asymmetric-rounded h-44 border-slate-200/10 dark:border-white/5 relative overflow-hidden flex items-center justify-center p-6 bg-[#020304]/60 select-none">
               {/* Minimal SVG Grid mockup of a map grid */}
-              <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <svg className="absolute inset-0 w-full h-full opacity-5 text-cyber-indigo" viewBox="0 0 100 100" preserveAspectRatio="none">
                 <path d="M 0,10 L 100,10 M 0,30 L 100,30 M 0,50 L 100,50 M 0,70 L 100,70 M 0,90 L 100,90 M 10,0 L 10,100 M 30,0 L 30,100 M 50,0 L 50,100 M 70,0 L 70,100 M 90,0 L 90,100" stroke="currentColor" strokeWidth="0.5" fill="none" />
                 <circle cx="50" cy="50" r="15" fill="none" stroke="currentColor" strokeWidth="0.5" />
               </svg>
               <div className="relative z-10 flex flex-col items-center">
-                <span className="w-3.5 h-3.5 rounded-full bg-cyber-pink animate-ping mb-2" />
-                <span className="text-xs font-mono font-bold tracking-widest text-slate-400 uppercase">Remote Active Worldwide</span>
+                <span className="w-3 h-3 rounded-full bg-cyber-pink animate-ping mb-3" />
+                <span className="text-[10px] font-mono font-bold tracking-widest text-slate-400 uppercase">// Remote Active Worldwide</span>
               </div>
             </div>
           </div>
 
           {/* Right Column: Validated Message Form */}
           <div className="lg:col-span-7">
-            <div className="glass-card p-8 md:p-10 rounded-3xl">
-              <form onSubmit={handleSubmit} className="space-y-6 text-left" noValidate>
+            <div className="glass-panel p-8 md:p-10 asymmetric-rounded-lg border border-slate-200/10 dark:border-white/5 relative">
+              {/* Corner crosshairs */}
+              <div className="absolute top-3 left-3 coordinate-mono select-none">+</div>
+              <div className="absolute top-3 right-3 coordinate-mono select-none">+</div>
+
+              <form onSubmit={handleSubmit} className="space-y-8 text-left" noValidate>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                   {/* Name field */}
                   <div className="flex flex-col">
-                    <label htmlFor="name" className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Name</label>
+                    <label htmlFor="name" className="coordinate-mono text-[10px] text-slate-500 uppercase tracking-widest mb-1">// 01_Your Name</label>
                     <input
                       id="name"
                       type="text"
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
-                      className={`px-4.5 py-3.5 rounded-xl border bg-slate-50/50 dark:bg-cyber-deep/60 text-sm outline-none text-slate-900 dark:text-white transition-all duration-300 focus:bg-white dark:focus:bg-black/40 ${
+                      className={`py-3.5 bg-transparent border-b text-sm outline-none text-slate-900 dark:text-white transition-all duration-300 ${
                         errors.name 
-                          ? 'border-rose-500/50 focus:border-rose-500 focus:ring-2 focus:ring-rose-500/10' 
-                          : 'border-slate-200/60 dark:border-white/5 focus:border-cyber-indigo dark:focus:border-cyber-teal focus:ring-2 focus:ring-cyber-indigo/10'
+                          ? 'border-rose-500/50 focus:border-rose-500' 
+                          : 'border-slate-200/60 dark:border-white/5 focus:border-cyber-indigo dark:focus:border-cyber-teal'
                       }`}
                       placeholder="Your name"
                     />
-                    {errors.name && <span className="text-xs text-rose-500 mt-1 font-semibold">{errors.name}</span>}
+                    {errors.name && <span className="text-[10px] text-rose-500 mt-1 font-semibold font-mono">{errors.name}</span>}
                   </div>
 
                   {/* Email field */}
                   <div className="flex flex-col">
-                    <label htmlFor="email" className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Email</label>
+                    <label htmlFor="email" className="coordinate-mono text-[10px] text-slate-500 uppercase tracking-widest mb-1">// 02_Email Address</label>
                     <input
                       id="email"
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className={`px-4.5 py-3.5 rounded-xl border bg-slate-50/50 dark:bg-cyber-deep/60 text-sm outline-none text-slate-900 dark:text-white transition-all duration-300 focus:bg-white dark:focus:bg-black/40 ${
+                      className={`py-3.5 bg-transparent border-b text-sm outline-none text-slate-900 dark:text-white transition-all duration-300 ${
                         errors.email 
-                          ? 'border-rose-500/50 focus:border-rose-500 focus:ring-2 focus:ring-rose-500/10' 
-                          : 'border-slate-200/60 dark:border-white/5 focus:border-cyber-indigo dark:focus:border-cyber-teal focus:ring-2 focus:ring-cyber-indigo/10'
+                          ? 'border-rose-500/50 focus:border-rose-500' 
+                          : 'border-slate-200/60 dark:border-white/5 focus:border-cyber-indigo dark:focus:border-cyber-teal'
                       }`}
                       placeholder="you@example.com"
                     />
-                    {errors.email && <span className="text-xs text-rose-500 mt-1 font-semibold">{errors.email}</span>}
+                    {errors.email && <span className="text-[10px] text-rose-500 mt-1 font-semibold font-mono">{errors.email}</span>}
                   </div>
                 </div>
 
                 {/* Subject field */}
                 <div className="flex flex-col">
-                  <label htmlFor="subject" className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Subject</label>
+                  <label htmlFor="subject" className="coordinate-mono text-[10px] text-slate-500 uppercase tracking-widest mb-1">// 03_Message Subject</label>
                   <input
                     id="subject"
                     type="text"
                     name="subject"
                     value={formData.subject}
                     onChange={handleInputChange}
-                    className={`px-4.5 py-3.5 rounded-xl border bg-slate-50/50 dark:bg-cyber-deep/60 text-sm outline-none text-slate-900 dark:text-white transition-all duration-300 focus:bg-white dark:focus:bg-black/40 ${
+                    className={`py-3.5 bg-transparent border-b text-sm outline-none text-slate-900 dark:text-white transition-all duration-300 ${
                       errors.subject 
-                        ? 'border-rose-500/50 focus:border-rose-500 focus:ring-2 focus:ring-rose-500/10' 
-                        : 'border-slate-200/60 dark:border-white/5 focus:border-cyber-indigo dark:focus:border-cyber-teal focus:ring-2 focus:ring-cyber-indigo/10'
+                        ? 'border-rose-500/50 focus:border-rose-500' 
+                        : 'border-slate-200/60 dark:border-white/5 focus:border-cyber-indigo dark:focus:border-cyber-teal'
                     }`}
-                    placeholder="SaaS Integration, Project Proposal..."
+                    placeholder="Project Proposal, Workspace Collaboration..."
                   />
-                  {errors.subject && <span className="text-xs text-rose-500 mt-1 font-semibold">{errors.subject}</span>}
+                  {errors.subject && <span className="text-[10px] text-rose-500 mt-1 font-semibold font-mono">{errors.subject}</span>}
                 </div>
 
                 {/* Message field */}
                 <div className="flex flex-col">
-                  <label htmlFor="message" className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Message</label>
+                  <label htmlFor="message" className="coordinate-mono text-[10px] text-slate-500 uppercase tracking-widest mb-1">// 04_Project Details</label>
                   <textarea
                     id="message"
-                    rows="5"
+                    rows="4"
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}
-                    className={`px-4.5 py-3.5 rounded-xl border bg-slate-50/50 dark:bg-cyber-deep/60 text-sm outline-none text-slate-900 dark:text-white transition-all duration-300 focus:bg-white dark:focus:bg-black/40 resize-none ${
+                    className={`py-3.5 bg-transparent border-b text-sm outline-none text-slate-900 dark:text-white resize-none transition-all duration-300 ${
                       errors.message 
-                        ? 'border-rose-500/50 focus:border-rose-500 focus:ring-2 focus:ring-rose-500/10' 
-                        : 'border-slate-200/60 dark:border-white/5 focus:border-cyber-indigo dark:focus:border-cyber-teal focus:ring-2 focus:ring-cyber-indigo/10'
+                        ? 'border-rose-500/50 focus:border-rose-500' 
+                        : 'border-slate-200/60 dark:border-white/5 focus:border-cyber-indigo dark:focus:border-cyber-teal'
                     }`}
-                    placeholder="Describe your project details..."
+                    placeholder="Describe your project specification..."
                   />
-                  {errors.message && <span className="text-xs text-rose-500 mt-1 font-semibold">{errors.message}</span>}
+                  {errors.message && <span className="text-[10px] text-rose-500 mt-1 font-semibold font-mono">{errors.message}</span>}
                 </div>
 
                 {/* Submit button */}
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl bg-gradient-to-r from-cyber-indigo to-cyber-pink text-white hover:opacity-95 hover:shadow-lg hover:shadow-cyber-indigo/20 disabled:opacity-50 transition-all text-sm font-bold shadow-md cursor-pointer"
+                  className="w-full flex items-center justify-center gap-2 py-3.5 px-6 rounded-full bg-cyber-indigo text-white hover:bg-cyber-indigo/95 disabled:opacity-50 transition-all text-xs font-bold uppercase tracking-wider shadow-lg cursor-pointer select-none"
                 >
                   {isSubmitting ? (
                     <>
-                      <span className="w-4.5 h-4.5 rounded-full border-2 border-white/30 border-t-white animate-spin" />
-                      <span>Sending Message...</span>
+                      <span className="w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
+                      <span>Sending Specifications...</span>
                     </>
                   ) : (
                     <>
-                      <Send className="w-4 h-4" />
-                      <span>Send Message</span>
+                      <Send className="w-3.5 h-3.5" />
+                      <span>Send Ledger Message</span>
                     </>
                   )}
                 </button>
