@@ -102,6 +102,34 @@ const projectsData = [
     features: ['Quick check-in widgets', 'Roster attendance logs', 'Local Storage synchronization', 'Absentee alert flags'],
     challenge: 'Persisting student records without requiring remote API databases.',
     solution: 'Created an automated sync interface saving logs to LocalStorage, with import/export capabilities.'
+  },
+  {
+    id: 8,
+    title: 'Hunger Bites',
+    category: 'Frontend',
+    description: 'A modern, responsive food ordering application built with React, TypeScript, and Vite.',
+    longDescription: 'Hunger Bites is a modern, responsive web application built to streamline the food ordering experience. Designed with a focus on performance and clean UI, this project demonstrates a robust implementation of modern frontend technologies including React component architectures, type-safe development using TypeScript, and optimized build setups using Vite.',
+    technologies: ['React JS', 'TypeScript', 'Vite', 'CSS3', 'TailwindCSS'],
+    gradient: 'from-amber-500 to-red-600',
+    github: 'https://github.com/anuradreddy-lgtm/hunger-bites',
+    demo: 'https://hunger-bites-one.vercel.app',
+    features: ['Interactive component-driven UI', 'Type-safe state and prop systems', 'Vite-powered fast page loads', 'Clean responsive menus and ordering flow'],
+    challenge: 'Enforcing type-safety across dynamic cart item calculations and custom theme parameters.',
+    solution: 'Designed robust TypeScript interfaces and generics to handle varying order details safely without casting types.'
+  },
+  {
+    id: 9,
+    title: 'Developer Portfolio',
+    category: 'Frontend',
+    description: 'A premium, handcrafted developer portfolio website with a built-in interactive CLI terminal console.',
+    longDescription: 'Developed a premium, highly responsive developer portfolio website showcasing projects, skills, experience, and certifications. Features custom interactive elements, an editorial layout with asymmetric spacing, micro-animations, custom dark mode, and an interactive macOS-style bash shell terminal emulator.',
+    technologies: ['React JS', 'Vite', 'Framer Motion', 'TailwindCSS', 'JavaScript (ES6)'],
+    gradient: 'from-blue-600 to-indigo-600',
+    github: 'https://github.com/anuradreddy-lgtm/portfolio',
+    demo: 'https://portfolio-ten-steel-29.vercel.app',
+    features: ['Interactive developer CLI terminal Console', 'Premium dark/light mode toggle', 'Asymmetric layout grid design', 'Framer Motion custom page transitions'],
+    challenge: 'Designing a fully functional shell emulator with matrix digital code waterfall and commands history in React.',
+    solution: 'Constructed custom react custom hooks to handle input buffers, tab completion, history tracking, and HTML5 canvas matrix rendering.'
   }
 ];
 

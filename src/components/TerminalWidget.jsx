@@ -131,6 +131,8 @@ export const TerminalWidget = ({ isOpen, onClose }) => {
           { text: '  [5] Event Enquiry & Booking CRM (JS + React + Node + Express + PostgreSQL)', type: 'output' },
           { text: '  [6] Child Health & Allergy Tracker (JS + React + Node + Express + HTML/CSS)', type: 'output' },
           { text: '  [7] Smart Student Attendance Tracker (React + HTML/CSS + Local Storage)', type: 'output' },
+          { text: '  [8] Hunger Bites (React + TypeScript + Vite + TailwindCSS)', type: 'output' },
+          { text: '  [9] Developer Portfolio (React + Vite + Framer Motion + TailwindCSS)', type: 'output' },
           { text: "Type 'projects' on the page to search details or click the Cards below!", type: 'output' },
         ];
         break;
